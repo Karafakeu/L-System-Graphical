@@ -19,8 +19,8 @@ The program itself, when ran using main.py, will ask (in terminal) for several i
 
 * "+"  = rotates turtle (the graphical) to the right by the angle
 * "-"  = rotates turtle (the graphical) to the left by the angle
-* [  = stores the position and the heading of turtle (the graphical) to a stack
-* ]  = restores the position and the heading of turtle (the graphical) from the top of the stack
+* "["  = stores the position and the heading of turtle (the graphical) to a stack
+* "]"  = restores the position and the heading of turtle (the graphical) from the top of the stack
 * C# = Changes color of the pen, to the color based on the color code replaced in place of '#'
 * Any other letter or symbol will be disregarded and represented as movement forward
 
