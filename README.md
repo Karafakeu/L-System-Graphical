@@ -9,10 +9,11 @@ pip install turtle
 ## Inputs
 The program itself, when ran using main.py, will ask (in terminal) for several inputs. Firstly, it asks if you want the summary of the graphical rules, which can also be seen under. It then asks the following:
 * Number of iterations: non-zero integer, representing the number of iterations for the L-System string function
-* Angle of rotation: non-zero integer between 0 to 360, representing the angle turtle will rotate when it is told to do so.
+* Angle of rotation: integer between 0 to 360, representing the angle turtle will rotate when it is told to do so.
 * Axiom: string, the axiom (starting symbol or symbols) for the L-System
 * Number of rules: non zero-integers, representing the number of rules the L-System will have. This is mainly for making the whole system easier to code.
 * Rules: strings, in the format of {to be replaced}={new string}. For example, the rule 'X=X+X' will replace X with X+X.
+* Randomly: bool (inputed as y or n by the user), if you want the angles to be randomized or not (they are randomized by around +-10%)
 
 ## Graphical Rules
 **These are the following commands:**
