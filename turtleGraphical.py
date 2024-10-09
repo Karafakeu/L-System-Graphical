@@ -1,6 +1,7 @@
 from turtle import Screen, Turtle
+import random
 
-def draw_lsystem(LString, angle, length, turtle, colorCodes):
+def draw_lsystem(LString, angle, length, turtle, colorCodes, randomly):
     turtle.pencolor("black")
     stack = []
     min_x, min_y, max_x, max_y = 0, 0, 0, 0
@@ -8,6 +9,7 @@ def draw_lsystem(LString, angle, length, turtle, colorCodes):
     skip = False
     # main loop for drawing
     for index, letter in enumerate(LString):
+        factor = angle // 10
         if skip:
             skip = False
             continue
@@ -20,9 +22,11 @@ def draw_lsystem(LString, angle, length, turtle, colorCodes):
                 skip = False
                 turtle.forward(length)
         elif letter == "+":
-            turtle.right(angle)
+            newAngle = angle + (random.randint(-factor, factor) if randomly else 0)
+            turtle.right(newAngle)
         elif letter == "-":
-            turtle.left(angle)
+            newAngle = angle + (random.randint(-factor, factor) if randomly else 0)
+            turtle.left(newAngle)
         elif letter == "[":
             stack.append((turtle.pos(), turtle.heading()))
         elif letter == "]":
@@ -40,7 +44,7 @@ def draw_lsystem(LString, angle, length, turtle, colorCodes):
 
     return min_x, min_y, max_x, max_y
 
-def drawSystem(LString, angle, length, colorCodes):
+def drawSystem(LString, angle, length, colorCodes, randomly):
     screen = Screen()
     screen.mode("world")
     turtle = Turtle()
@@ -58,7 +62,7 @@ def drawSystem(LString, angle, length, colorCodes):
     turtle.penup()
     turtle.goto(0, 0)
     turtle.pendown()
-    min_x, min_y, max_x, max_y = draw_lsystem(LString, angle, length, turtle, colorCodes)
+    min_x, min_y, max_x, max_y = draw_lsystem(LString, angle, length, turtle, colorCodes, randomly)
 
     # scale the world
     screen.setworldcoordinates(min_x, min_y, max_x, max_y)
