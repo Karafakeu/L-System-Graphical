@@ -3,6 +3,7 @@ import stringInterpreter, turtleGraphical
 def main():
     colorCodes = {"0": "Black", "1": "Gray", "2": "Brown", "3": "Pink", "4": "Purple", "5": "Blue", "6": "Green", "7": "Yellow", "8": "Orange", "9": "Red"}
 
+    # see the graphical rules?
     choice = input("Do you want to see the basic commands of the graphical first (y/n)? ")
     while choice not in ["y", "n"]:
         choice = input("Please choose either y or n. ")

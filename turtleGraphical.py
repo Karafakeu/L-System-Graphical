@@ -9,23 +9,24 @@ def draw_lsystem(LString, angle, length, turtle, colorCodes, randomly):
     skip = False
     # main loop for drawing
     for index, letter in enumerate(LString):
-        factor = angle // 10
+        angleFactor = angle // 10
+        # because of coloring
         if skip:
             skip = False
             continue
         if letter == "C":
             currentColorCode = LString[index + 1]
-            if currentColorCode in colorCodes:
+            if currentColorCode in colorCodes: # C used to identify color
                 skip = True
                 turtle.pencolor(colorCodes[currentColorCode].lower())
-            else:
+            else: # if C is only used as a letter and not to identify color
                 skip = False
                 turtle.forward(length)
         elif letter == "+":
-            newAngle = angle + (random.randint(-factor, factor) if randomly else 0)
+            newAngle = angle + (random.randint(-angleFactor, angleFactor) if randomly else 0)
             turtle.right(newAngle)
         elif letter == "-":
-            newAngle = angle + (random.randint(-factor, factor) if randomly else 0)
+            newAngle = angle + (random.randint(-angleFactor, angleFactor) if randomly else 0)
             turtle.left(newAngle)
         elif letter == "[":
             stack.append((turtle.pos(), turtle.heading()))
@@ -38,6 +39,7 @@ def draw_lsystem(LString, angle, length, turtle, colorCodes, randomly):
         else:
             turtle.forward(length)
     
+        # save the coordinates of the drawing to scale the picture later
         x, y = turtle.pos()
         min_x, min_y = min(min_x, x), min(min_y, y)
         max_x, max_y = max(max_x, x), max(max_y, y)
@@ -45,11 +47,12 @@ def draw_lsystem(LString, angle, length, turtle, colorCodes, randomly):
     return min_x, min_y, max_x, max_y
 
 def drawSystem(LString, angle, length, colorCodes, randomly):
+    # definitions
     screen = Screen()
     screen.mode("world")
     turtle = Turtle()
 
-    # definitions
+    # more definitions
     screen.title("L-System Graphical Representation")
     turtle.shape("circle")
     turtle.shapesize(0.25)
